@@ -1,3 +1,16 @@
+/******************************************************************************
+$$\    $$\                    $$\           $$\       $$\                     
+$$ |   $$ |                   \__|          $$ |      $$ |                    
+$$ |   $$ |$$$$$$\   $$$$$$\  $$\  $$$$$$\  $$$$$$$\  $$ | $$$$$$\   $$$$$$$\ 
+\$$\  $$  |\____$$\ $$  __$$\ $$ | \____$$\ $$  __$$\ $$ |$$  __$$\ $$  _____|
+ \$$\$$  / $$$$$$$ |$$ |  \__|$$ | $$$$$$$ |$$ |  $$ |$$ |$$$$$$$$ |\$$$$$$\  
+  \$$$  / $$  __$$ |$$ |      $$ |$$  __$$ |$$ |  $$ |$$ |$$   ____| \____$$\ 
+   \$  /  \$$$$$$$ |$$ |      $$ |\$$$$$$$ |$$$$$$$  |$$ |\$$$$$$$\ $$$$$$$  |
+    \_/    \_______|\__|      \__| \_______|\_______/ \__| \_______|\_______/ 
+                                                                              
+
+Description: Variables Definition
+*******************************************************************************/
 //Global Variables
 let currentScore, currentPlayer, playerScores, gameStatus;
 
@@ -12,20 +25,6 @@ const currentScore2 = document.querySelector("#current2");
 // Dice Variable
 let dice = document.querySelector("#dice");
 
-//Button Variables
-const btnNew = document.querySelector("#newGameBtn");
-const btnRoll = document.querySelector("#rollBtn");
-const btnHold = document.querySelector("#holdBtn");
-
-//Audio Variables
-const diceRollAudio = new Audio("assets/sounds/dice-roll.mp3");
-const winnerAudio = new Audio("assets/sounds/winner.mp3");
-
-//Mobal Variable
-const aboutTheGameModal = new bootstrap.Modal(
-  document.getElementById("aboutTheGameModal")
-);
-
 // Dice angle array
 let diceAngleArray = [
   [0, 0, 0],
@@ -37,15 +36,56 @@ let diceAngleArray = [
   [-133, -360, -53],
 ];
 
-//Initialize HTML values function
+//Button Variables
+const btnNew = document.querySelector("#newGameBtn");
+const btnRoll = document.querySelector("#rollBtn");
+const btnHold = document.querySelector("#holdBtn");
+
+//Audio Variables
+const diceRollAudio = new Audio("assets/sounds/dice-roll.mp3");
+const winnerAudio = new Audio("assets/sounds/winner.mp3");
+
+/*******************************************************
+$$\      $$\                 $$\           $$\ 
+$$$\    $$$ |                $$ |          $$ |
+$$$$\  $$$$ | $$$$$$\   $$$$$$$ | $$$$$$\  $$ |
+$$\$$\$$ $$ |$$  __$$\ $$  __$$ | \____$$\ $$ |
+$$ \$$$  $$ |$$ /  $$ |$$ /  $$ | $$$$$$$ |$$ |
+$$ |\$  /$$ |$$ |  $$ |$$ |  $$ |$$  __$$ |$$ |
+$$ | \_/ $$ |\$$$$$$  |\$$$$$$$ |\$$$$$$$ |$$ |
+\__|     \__| \______/  \_______| \_______|\__|
+                                               
+
+Description: Modal Variable / Automatically Open a Modal
+********************************************************/
+
+//Mobal Variable
+const aboutTheGameModal = new bootstrap.Modal(
+  document.getElementById("aboutTheGameModal")
+);
+
+//Open About Game Modal
+// aboutTheGameModal.show();
+
+/*****************************************
+$$$$$$\           $$\   $$\     
+\_$$  _|          \__|  $$ |    
+  $$ |  $$$$$$$\  $$\ $$$$$$\   
+  $$ |  $$  __$$\ $$ |\_$$  _|  
+  $$ |  $$ |  $$ |$$ |  $$ |    
+  $$ |  $$ |  $$ |$$ |  $$ |$$\ 
+$$$$$$\ $$ |  $$ |$$ |  \$$$$  |
+\______|\__|  \__|\__|   \____/ 
+                                
+Description: Initialize Variables Function
+******************************************/
 const initializeValues = () => {
-  
   //Game Variables
   currentScore = 0;
   currentPlayer = 1;
   playerScores = [null, 0, 0];
   gameStatus = "playing";
-  
+
   //Set values to 0 for player elements
   score1.innerHTML = 0;
   score2.innerHTML = 0;
@@ -57,38 +97,62 @@ const initializeValues = () => {
 
   //Set active player to player 1
   player1.classList.add("border-primary");
-}
+
+};
 
 //Initialize Values
 initializeValues();
 
-//Open About Game Modal
-aboutTheGameModal.show();
-
-//Switch Player Functionality
+/**********************************************************
+ $$$$$$\                $$\   $$\               $$\       
+$$  __$$\               \__|  $$ |              $$ |      
+$$ /  \__|$$\  $$\  $$\ $$\ $$$$$$\    $$$$$$$\ $$$$$$$\  
+\$$$$$$\  $$ | $$ | $$ |$$ |\_$$  _|  $$  _____|$$  __$$\ 
+ \____$$\ $$ | $$ | $$ |$$ |  $$ |    $$ /      $$ |  $$ |
+$$\   $$ |$$ | $$ | $$ |$$ |  $$ |$$\ $$ |      $$ |  $$ |
+\$$$$$$  |\$$$$$\$$$$  |$$ |  \$$$$  |\$$$$$$$\ $$ |  $$ |
+ \______/  \_____\____/ \__|   \____/  \_______|\__|  \__|
+                                                          
+Description: Switch Player Function
+***********************************************************/
 const switchPlayer = () => {
   document.querySelector(`#current${currentPlayer}`).innerHTML = 0;
   currentScore = 0;
   currentPlayer = currentPlayer === 1 ? 2 : 1;
   player1.classList.toggle("border-primary");
   player2.classList.toggle("border-primary");
-}
-  
-//Dice Functionality
-btnRoll.addEventListener("click", () => {
+};
 
+/******************************
+$$$$$$$\            $$\ $$\ 
+$$  __$$\           $$ |$$ |
+$$ |  $$ | $$$$$$\  $$ |$$ |
+$$$$$$$  |$$  __$$\ $$ |$$ |
+$$  __$$< $$ /  $$ |$$ |$$ |
+$$ |  $$ |$$ |  $$ |$$ |$$ |
+$$ |  $$ |\$$$$$$  |$$ |$$ |
+\__|  \__| \______/ \__|\__|
+                            
+Description: btnRoll Event
+*******************************/
+btnRoll.addEventListener("click", (e) => {
   //Check if game status is playing
-  if(gameStatus === 'playing') {
-
-
+  if (gameStatus === "playing") {
     //Generate random dice number
     const randomDiceNumber = Math.trunc(Math.random() * 6) + 1;
-    
+
     //Display dice based on the randomNumber and play audio
     diceRollAudio.play();
 
+    //Disable button
+    let rollBtnIcon = document.querySelector("#rollBtnIcon");
+    
+    btnRoll.disabled = true;
+    rollBtnIcon.classList.remove("fa-dice-d6");
+    rollBtnIcon.classList.add("fa-spinner", "fa-spin");
+    
     setTimeout(() => {
-      
+
       dice.classList.remove("d-none");
 
       // Cube animation
@@ -101,12 +165,19 @@ btnRoll.addEventListener("click", () => {
       dice.addEventListener("animationend", function (e) {
         dice.style.animation = "";
       });
+
     }, 300);
 
     setTimeout(() => {
 
+      //Enable Button
+      btnRoll.disabled = false;
+      rollBtnIcon.classList.remove("fa-spinner", "fa-spin");
+      rollBtnIcon.classList.add("fa-dice-d6");
+
       // Check dice rolled if 1
       if (randomDiceNumber !== 1) {
+        
         currentScore += randomDiceNumber;
         document.querySelector(`#current${currentPlayer}`).innerHTML =
           currentScore;
@@ -114,43 +185,72 @@ btnRoll.addEventListener("click", () => {
         // Switch to next player
         switchPlayer();
       }
-
     }, 1700);
-    
   }
-  
 });
 
-
+/***********************************
+$$\   $$\           $$\       $$\ 
+$$ |  $$ |          $$ |      $$ |
+$$ |  $$ | $$$$$$\  $$ | $$$$$$$ |
+$$$$$$$$ |$$  __$$\ $$ |$$  __$$ |
+$$  __$$ |$$ /  $$ |$$ |$$ /  $$ |
+$$ |  $$ |$$ |  $$ |$$ |$$ |  $$ |
+$$ |  $$ |\$$$$$$  |$$ |\$$$$$$$ |
+\__|  \__| \______/ \__| \_______|
+                                                 
+Description: btnHold Event
+************************************/
 btnHold.addEventListener("click", () => {
-
   //Check if game status is playing
   if (gameStatus === "playing") {
 
+    //Disable hold button
+    let holdBtnIcon = document.querySelector("#holdBtnIcon");
+
+    btnHold.disabled = true;
+    holdBtnIcon.classList.add("fa-spinner", "fa-spin");
+    holdBtnIcon.classList.remove("fa-upload");
+
     dice.classList.add("d-none");
 
-    //Add current score to active player's score
-    playerScores[currentPlayer] += currentScore;
+    setTimeout(() => {
 
-    document.querySelector(`#score${currentPlayer}`).innerHTML = playerScores[currentPlayer];
+      //Add current score to active player's score
+      playerScores[currentPlayer] += currentScore;
 
-    // 2. Check if player's score is >= 100
-    if(playerScores[currentPlayer] >= 100) {
+      document.querySelector(`#score${currentPlayer}`).innerHTML = playerScores[currentPlayer];
 
-      //Ending the game
-      gameStatus = "finished";
+      //Enable button
+      btnHold.disabled = false;
+      holdBtnIcon.classList.remove("fa-spinner", "fa-spin");
+      holdBtnIcon.classList.add("fa-upload");
 
-    } else {
+      // 2. Check if player's score is >= 100
+      if (playerScores[currentPlayer] >= 100) {
+        //Ending the game
+        gameStatus = "finished";
+      } else {
+        //Switch again to the next player
+        switchPlayer();
+      }
 
-      //Switch again to the next player
-      switchPlayer();
+    }, 300);
 
-    }
+   
   }
-
-  
 });
 
-
-//Restart game button
+/***********************************
+$$\   $$\                         
+$$$\  $$ |                        
+$$$$\ $$ | $$$$$$\  $$\  $$\  $$\ 
+$$ $$\$$ |$$  __$$\ $$ | $$ | $$ |
+$$ \$$$$ |$$$$$$$$ |$$ | $$ | $$ |
+$$ |\$$$ |$$   ____|$$ | $$ | $$ |
+$$ | \$$ |\$$$$$$$\ \$$$$$\$$$$  |
+\__|  \__| \_______| \_____\____/ 
+                                  
+Description: btnNew Game Event
+************************************/
 btnNew.addEventListener("click", initializeValues);
