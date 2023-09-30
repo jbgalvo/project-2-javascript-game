@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Font Variables */
+  --primary-font: "Poppins", sans-serif;
+  --secondary-font: 'Quicksand', sans-serif;
+
+  /* Background color */
+  --bg-primary: #0D3972;
+  --bg-secondary: #225985;
+  --bg-white: #fff;
+  --bg-black: #121212;
+  --bg-light-white:#fcfcfc;
+  --bg-light-2: #f2f7fa;
+
+  /* Text Color Variables */
+  --text-primary: #0D3972;
+  --text-secondary: #225985;
+  --text-white: #fff;
+  --text-light-white: #e5eaf5;
+  --text-black: #121212;
+  --text-black-2: #333;
+  --text-light: #798089;
+  --text-light-2: #5e5e72;
+  --text-light-3: #A0A0A0; 
+}
+
+*, ::after, ::before {
+  box-sizing: content-box;
+}
+
+body {
+  font-family: var(--primary-font);
+  color: var(--text-white);
+  font-weight: 500;
+  background-color: #0D3972;
+  height: 100vh;
+  /* background-image: linear-gradient(to top left, #094375 0%, #003566 100%); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* dice CSS */
+
+#dice .dice-front {
+  transform: translateZ(100px);
+}
+
+#dice .dice-back {
+  transform: rotateX(-180deg) translateZ(100px);
+}
+
+#dice .dice-right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+
+#dice .dice-left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+#dice .dice-top {
+  transform: rotateX(90deg) translateZ(100px);
+}
+
+#dice .dice-bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+.container-dice {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin: 0 auto 40px;
+  /* border: 1px solid #FFF; */
+  perspective: 1000px;
+  perspective-origin: 50% 100%;
+}
+
+#dice {
+  width: 100%;
+  height: 100%;
+  top: 100px;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 5s;
+}
+
+#dice:hover {
+  cursor: pointer;
+}
+
+#dice div {
+  background: hsla(0, 85%, 50%, 0.8);
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  border: 2px solid #ab1a1a;
+  margin: 0 auto;  
+  font-family: var(--primary-font);
+  font-size: 500%;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.dice-dot {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 15px;  
+}
+
+.dice-front .dice-dot1 { top: 85px; left: 85px; }
+.dice-back .dice-dot1 { top: 45px; left: 45px; }
+.dice-back .dice-dot2 { top: 125px; left: 125px; }
+.dice-right .dice-dot1 { top: 45px; left: 45px; }
+.dice-right .dice-dot2 { top: 85px; left: 85px; }
+.dice-right .dice-dot3 { top: 125px; left: 125px; }
+.dice-left .dice-dot1 { top: 45px; left: 45px; }
+.dice-left .dice-dot2 { top: 45px; left: 125px; }
+.dice-left .dice-dot3 { top: 125px; left: 45px; }
+.dice-left .dice-dot4 { top: 125px; left: 125px; }
+.dice-top .dice-dot1 { top: 45px; left: 45px; }
+.dice-top .dice-dot2 { top: 45px; left: 125px; }
+.dice-top .dice-dot3 { top: 85px; left: 85px; }
+.dice-top .dice-dot4 { top: 125px; left: 45px; }
+.dice-top .dice-dot5 { top: 125px; left: 125px; }
+.dice-bottom .dice-dot1 { top: 45px; left: 45px; }
+.dice-bottom .dice-dot2 { top: 45px; left: 85px; }
+.dice-bottom .dice-dot3 { top: 45px; left: 125px; }
+.dice-bottom .dice-dot4 { top: 125px; left: 45px; }
+.dice-bottom .dice-dot5 { top: 125px; left: 85px; }
+.dice-bottom .dice-dot6 { top: 125px; left: 125px; }

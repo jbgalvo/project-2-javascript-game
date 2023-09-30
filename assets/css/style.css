@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Font Variables */
+  --primary-font: "Poppins", sans-serif;
+  --secondary-font: 'Quicksand', sans-serif;
+
+  /* Background color */
+  --bg-primary: #0D3972;
+  --bg-secondary: #225985;
+  --bg-white: #fff;
+  --bg-black: #121212;
+  --bg-light-white:#fcfcfc;
+  --bg-light-2: #f2f7fa;
+
+  /* Text Color Variables */
+  --text-primary: #0D3972;
+  --text-secondary: #225985;
+  --text-white: #fff;
+  --text-light-white: #e5eaf5;
+  --text-black: #121212;
+  --text-black-2: #333;
+  --text-light: #798089;
+  --text-light-2: #5e5e72;
+  --text-light-3: #A0A0A0; 
+}
+
+body {
+  font-family: var(--primary-font);
+  color: var(--text-white);
+  font-weight: 500;
+  /* background-color: #0D3972; */
+  height: 100vh;
+  background-image: linear-gradient(to top left, #094375 0%, #003566 100%);
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.title {
+  text-align: center;
+  padding: 70px 0 30px;
+}
+
+.about-info-section {
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+.about-info-section button {
+  width: 200px;
+  margin: 10px;
+  border-radius: 999px;
+}
