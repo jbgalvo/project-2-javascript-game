@@ -31,7 +31,7 @@ body {
   font-weight: 500;
   /* background-color: #0D3972; */
   height: 100vh;
-  background-image: linear-gradient(to top left, #094375 0%, #003566 100%);
+  background-image: linear-gradient(to top left, #2167a5 0%, #0D3972 100%);
   /* display: flex;
   align-items: center;
   justify-content: center; */
@@ -39,16 +39,97 @@ body {
 
 .title {
   text-align: center;
-  padding: 70px 0 30px;
 }
 
 .about-info-section {
   text-align: center;
-  padding-bottom: 70px;
+  padding-bottom: 50px;
 }
 
 .about-info-section button {
   width: 200px;
   margin: 10px;
   border-radius: 999px;
+}
+
+.player-name {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.player-score {
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 150px;
+}
+
+.current {
+  background-color: var(--bg-primary);
+  /* opacity: 0.8; */
+  border-radius: 9px;
+  color: #fff;
+  padding: 1rem;
+  width: 50%;
+  transition: all 0.75s;
+}
+
+.current-label {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
+  color: #ddd;
+}
+
+.current-score {
+  font-size: 3.5rem;
+}
+
+/***********************************************
+$$\      $$\                 $$\ $$\           
+$$$\    $$$ |                $$ |\__|          
+$$$$\  $$$$ | $$$$$$\   $$$$$$$ |$$\  $$$$$$\  
+$$\$$\$$ $$ |$$  __$$\ $$  __$$ |$$ | \____$$\ 
+$$ \$$$  $$ |$$$$$$$$ |$$ /  $$ |$$ | $$$$$$$ |
+$$ |\$  /$$ |$$   ____|$$ |  $$ |$$ |$$  __$$ |
+$$ | \_/ $$ |\$$$$$$$\ \$$$$$$$ |$$ |\$$$$$$$ |
+\__|     \__| \_______| \_______|\__| \_______|
+                                               
+                                               
+Description: Media Queries Section CSS
+***********************************************/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+  .player-name {
+    font-size: 2rem;
+  }
+
+  .current {
+    width: 90%;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+  .player-name {
+    font-size: 2rem;
+  }
+
+  .current {
+    width: 90%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 992px) {
+  .current {
+    width: 50%;
+  }
 }

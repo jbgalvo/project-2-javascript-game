@@ -98,42 +98,58 @@ Description: Project 2 - Javascript Game
   </main> -->
 
   <main>
-    <section class="container">
+    <section class="container p-5">
       <h1 class="title">
         <i class="fa-solid fa-dice fa-bounce"></i>
         Welcome to Pig Dice Game!
         <i class="fa-solid fa-face-smile-wink"></i>
       </h1>
       <div class="about-info-section">
-        <button class="btn btn-primary me-2">
+        <button class="btn btn-danger me-2">
           <i class="fa-solid fa-arrows-rotate"></i>
           New Game
         </button>
-        <button class="btn btn-primary me-2">
+        <button class="btn btn-success me-2">
           <i class="fa-regular fa-circle-question"></i>
           About the Game
         </button>
       </div>
       <div class="row">
         <div class="col-md-12 col-lg-12">
-          <div class="card">
+          <div class="card shadow">
                 <div class="card-body">
                   <div class="row gy-5">
-                    <div class="col-md-6 col-lg-6">
-                      <div class="card">
+                    <div class="col-md-5 col-lg-5">
+                      <div class="card text-center border-primary">
                         <div class="card-body">
-                          <h5 class="card-title">Special title treatment</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                          <h2 class="card-title player-name" id="player-1">Player 1</h2>
+                          <p class="card-text player-score" id="score-1">0</p>
+                          <div class="current mx-auto">
+                            <p class="current-label">Current</p>
+                            <p class="current-score" id="current-1">0</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6 col-lg-6">
-                      <div class="card">
+                    <div class="col-md-2 col-lg-2">
+                      <div class="row mt-4">
+                        <div class="d-grid gy-3 col-6 col-sm-12">
+                          <button type="reset" class="btn btn-primary p-3 rounded">Roll</button>
+                        </div>
+                        <div class="d-grid gy-3 col-6 col-sm-12">
+                          <button type="submit" class="btn btn-primary p-3 rounded">Hold</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-5 col-lg-5">
+                      <div class="card text-center border-danger">
                         <div class="card-body">
-                          <h5 class="card-title">Special title treatment</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                          <h2 class="card-title player-name" id="player-2">Player 2</h2>
+                          <p class="card-text player-score" id="score=2">0</p>
+                          <div class="current mx-auto">
+                            <p class="current-label">Current</p>
+                            <p class="current-score" id="current-2">0</p>
+                          </div>
                         </div>
                       </div>
                     </div>
