@@ -134,6 +134,10 @@ Description: Media Queries Section CSS
   .current {
     width: 90%;
   }
+
+  .current-label {
+    font-size: 1.2rem;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
