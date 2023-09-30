@@ -36,14 +36,13 @@ const btnRoll = document.querySelector("#rollBtn");
 const btnHold = document.querySelector("#holdBtn");
 
 
-
 //Initialize HTML values function
 const initializeValues = () => {
   
   //Game Variables
   currentScore = 0;
   currentPlayer = 1;
-  playerScores = [0, 0];
+  playerScores = [null, 0, 0];
   gameStatus = "playing";
   
   //Set values to 0 for player elements
@@ -63,10 +62,12 @@ const initializeValues = () => {
 initializeValues();
 
 //Switch Player Functionality
+
 const switchPlayer = () => {
-  currentScore = 0;
-  currentPlayer = currentPlayer === 1 ? 1 : 2;
+
   document.querySelector(`#current${currentPlayer}`).innerHTML = 0;
+  currentScore = 0;
+  currentPlayer = currentPlayer === 1 ? 2 : 1;
   player1.classList.toggle("border-primary");
   player2.classList.toggle("border-primary");
 }
@@ -74,6 +75,8 @@ const switchPlayer = () => {
 
 //Dice Functionality
 btnRoll.addEventListener("click", () => {
+
+  //Check if game status is playing
   if(gameStatus === 'playing') {
 
     //Generate random dice number
@@ -93,6 +96,36 @@ btnRoll.addEventListener("click", () => {
       switchPlayer();
     }
   }
+  
+});
+
+
+btnHold.addEventListener("click", () => {
+
+  //Check if game status is playing
+  if (gameStatus === "playing") {
+    //Add current score to active player's score
+    playerScores[currentPlayer] += currentScore;
+
+    document.querySelector(`#score${currentPlayer}`).innerHTML = playerScores[currentPlayer];
+
+    // 2. Check if player's score is >= 100
+    if(playerScores[currentPlayer] >= 5) {
+
+      //Ending the game
+      gameStatus = "finished";
+      //Hide dice
+      dice.classList.add("d-none");
+
+
+    } else {
+
+      //Switch again to the next player
+      switchPlayer();
+
+    }
+  }
+
   
 });
 

@@ -95,6 +95,11 @@ body {
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
 }
 
+.status-indicator {
+  vertical-align: middle;
+  font-size: 14px !important;
+}
+
 /***********************************************
 $$\      $$\                 $$\ $$\           
 $$$\    $$$ |                $$ |\__|          
