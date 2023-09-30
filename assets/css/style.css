@@ -86,19 +86,137 @@ body {
   font-size: 3.5rem;
 }
 
-.dice {
-  /* position: absolute;
-  left: 50%;
-  top: .5rem;
-  transform: translateX(-50%); */
-  height: 10rem;
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
-}
-
 .status-indicator {
   vertical-align: middle;
   font-size: 14px !important;
 }
+
+/* dice CSS */
+.container-dice{
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  font-family: 'fontawesome';
+}
+.container-dice .dice{
+  position: relative;
+  left: 5%;
+  top: 40%;
+  height: 160px;
+  width: 160px;
+  transform-style: preserve-3d;
+  transform: rotateX(135deg) rotateY(-217deg) rotateZ(-88deg);
+}
+.container-dice .dice div{
+  position: absolute;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  border:2px solid #eee;
+  color: #fff;
+}
+.container-dice .dice div span{
+  font-size: 22px;
+}
+
+.container-dice .dice .front{
+  background: var(--bg-primary);
+  transform: translateZ(60px);
+}
+.container-dice .dice .back{
+  background: var(--bg-primary);
+  transform: translateZ(-100px) rotateY(180deg);
+}
+.container-dice .dice .right{
+  background: var(--bg-primary);
+  transform-origin: top right;
+  transform: rotateY(-270deg) translateX(100px);
+}
+.container-dice .dice .left{
+  background: var(--bg-primary);
+  transform-origin: center left;
+  transform: rotateY(270deg) translateX(-100px);
+}
+.container-dice .dice .top{
+  background: var(--bg-primary);
+  transform-origin: top center;
+  transform: rotateX(-270deg) translateY(-100px);
+}
+.container-dice .dice .bottom{
+  background: var(--bg-primary);
+  transform-origin: bottom center;
+  transform: rotateX(270deg) translateY(100px);
+}
+
+/*DOT ALIGNMENT */
+.container-dice .dice .front span,.container-dice .dice .left span:nth-child(1),
+.container-dice .dice .right span:nth-child(1){
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.container-dice .dice .top span:nth-child(1),.container-dice .dice .left span:nth-child(2),
+.container-dice .dice .right span:nth-child(2),
+.container-dice .dice .bottom span:nth-child(1){
+  position: absolute;
+  top: 35px;
+  left: 35px;
+}
+.container-dice .dice .top span:nth-child(2),.container-dice .dice .left span:nth-child(3),
+.container-dice .dice .right span:nth-child(3),
+.container-dice .dice .bottom span:nth-child(2){
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+}
+.container-dice .dice .right span:nth-child(4),
+.container-dice .dice .bottom span:nth-child(3){
+  position: absolute;
+  top: 35px;
+  right: 35px;
+}
+.container-dice .dice .right span:nth-child(5),
+.container-dice .dice .bottom span:nth-child(4){
+  position: absolute;
+  bottom: 35px;
+  left: 35px;
+}
+.container-dice .dice .back pre{
+  font-size: 21px;
+  font-family: 'fontawesome';
+  margin: 0;
+}
+.container-dice .dice .back .firstPre{
+  position: absolute;
+  top: 45px;
+  left: 26px;
+}
+.container-dice .dice .back .secondPre{
+  position: absolute;
+  bottom: 45px;
+  right: 26px;
+}
+
+@keyframes animate {
+  25%{
+    transform: rotateX(45deg) rotateY(65deg) rotateZ(35deg);
+    top: 0%;
+  }
+  50%{
+    transform: rotateX(145deg) rotateY(165deg) rotateZ(135deg);
+    top: 30%;
+  }
+  75%{
+    transform: rotateX(276deg) rotateY(256deg) rotateZ(246deg);
+    top: 45%;
+  }
+  100%{
+    transform: rotateX(376deg) rotateY(356deg) rotateZ(346deg);
+    top: 60%;
+  }
+}
+
 
 /***********************************************
 $$\      $$\                 $$\ $$\           

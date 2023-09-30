@@ -28,13 +28,27 @@ const currentScore1 = document.querySelector("#current1");
 const currentScore2 = document.querySelector("#current2");
 
 // Dice Variable
-const dice = document.querySelector(".dice");
+let dice = document.querySelector("#dice");
 
 //Button Variables
 const btnNew = document.querySelector("#newGameBtn");
 const btnRoll = document.querySelector("#rollBtn");
 const btnHold = document.querySelector("#holdBtn");
 
+//Audio Variables
+const diceRollAudio = new Audio("assets/sounds/dice-roll.mp3");
+const winnerAudio = new Audio("assets/sounds/winner.mp3");
+
+// Dice angle array
+let diceAngleArray = [
+  [0, 0, 0],
+  [-310, -362, -38],
+  [-400, -320, -2],
+  [135, -217, -88],
+  [-224, -317, 5],
+  [-47, -219, -81],
+  [-133, -360, -53],
+];
 
 //Initialize HTML values function
 const initializeValues = () => {
@@ -62,39 +76,57 @@ const initializeValues = () => {
 initializeValues();
 
 //Switch Player Functionality
-
 const switchPlayer = () => {
-
   document.querySelector(`#current${currentPlayer}`).innerHTML = 0;
   currentScore = 0;
   currentPlayer = currentPlayer === 1 ? 2 : 1;
   player1.classList.toggle("border-primary");
   player2.classList.toggle("border-primary");
 }
-
-
+  
 //Dice Functionality
 btnRoll.addEventListener("click", () => {
 
   //Check if game status is playing
   if(gameStatus === 'playing') {
 
+
     //Generate random dice number
     const randomDiceNumber = Math.trunc(Math.random() * 6) + 1;
+    
+    //Display dice based on the randomNumber and play audio
+    diceRollAudio.play();
 
-    //Display dice based on the randomNumber
-    dice.classList.remove("d-none");
-    dice.src = `assets/images/dice-${randomDiceNumber}.png`;
+    setTimeout(() => {
+      
+      dice.classList.remove("d-none");
 
-    // Check dice rolled if 1
-    if (randomDiceNumber !== 1) {
-      currentScore += randomDiceNumber;
-      document.querySelector(`#current${currentPlayer}`).innerHTML =
-        currentScore;
-    } else {
-      // Switch to next player
-      switchPlayer();
-    }
+      // Cube animation
+      dice.style.animation = "animate 1.4s linear";
+
+      // Dice transform
+      dice.style.transform = `rotateX(${diceAngleArray[randomDiceNumber][0]}deg) rotateY(${diceAngleArray[randomDiceNumber][1]}deg) rotateZ(${diceAngleArray[randomDiceNumber][2]}deg)`;
+      dice.style.transition = "1s linear";
+
+      dice.addEventListener("animationend", function (e) {
+        dice.style.animation = "";
+      });
+    }, 300);
+
+    setTimeout(() => {
+
+      // Check dice rolled if 1
+      if (randomDiceNumber !== 1) {
+        currentScore += randomDiceNumber;
+        document.querySelector(`#current${currentPlayer}`).innerHTML =
+          currentScore;
+      } else {
+        // Switch to next player
+        switchPlayer();
+      }
+
+    }, 1700);
+    
   }
   
 });
@@ -104,19 +136,19 @@ btnHold.addEventListener("click", () => {
 
   //Check if game status is playing
   if (gameStatus === "playing") {
+
+    dice.classList.add("d-none");
+
     //Add current score to active player's score
     playerScores[currentPlayer] += currentScore;
 
     document.querySelector(`#score${currentPlayer}`).innerHTML = playerScores[currentPlayer];
 
     // 2. Check if player's score is >= 100
-    if(playerScores[currentPlayer] >= 5) {
+    if(playerScores[currentPlayer] >= 100) {
 
       //Ending the game
       gameStatus = "finished";
-      //Hide dice
-      dice.classList.add("d-none");
-
 
     } else {
 
