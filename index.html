@@ -97,6 +97,18 @@ Description: Project 2 - Javascript Game
     </section>
   </main> -->
 
+  <!--************************************
+  $$\      $$\           $$\           
+  $$$\    $$$ |          \__|          
+  $$$$\  $$$$ | $$$$$$\  $$\ $$$$$$$\  
+  $$\$$\$$ $$ | \____$$\ $$ |$$  __$$\ 
+  $$ \$$$  $$ | $$$$$$$ |$$ |$$ |  $$ |
+  $$ |\$  /$$ |$$  __$$ |$$ |$$ |  $$ |
+  $$ | \_/ $$ |\$$$$$$$ |$$ |$$ |  $$ |
+  \__|     \__| \_______|\__|\__|  \__|
+                                      
+  Description: Main Section
+  **************************************-->
   <main>
     <section class="container p-5">
       <h1 class="title">
@@ -105,7 +117,7 @@ Description: Project 2 - Javascript Game
         <i class="fa-solid fa-face-smile-wink"></i>
       </h1>
       <div class="about-info-section">
-        <button class="btn btn-danger me-2">
+        <button type="button" class="btn btn-danger me-2" id="newGameBtn">
           <i class="fa-solid fa-arrows-rotate"></i>
           New Game
         </button>
@@ -117,38 +129,68 @@ Description: Project 2 - Javascript Game
       <div class="row">
         <div class="col-md-12 col-lg-12">
           <div class="card shadow">
-                <div class="card-body">
+              <div class="card-body">
                   <div class="row gy-5">
+                    <!--*****************************************************************
+                    $$$$$$$\  $$\                                                 $$\   
+                    $$  __$$\ $$ |                                              $$$$ |  
+                    $$ |  $$ |$$ | $$$$$$\  $$\   $$\  $$$$$$\   $$$$$$\        \_$$ |  
+                    $$$$$$$  |$$ | \____$$\ $$ |  $$ |$$  __$$\ $$  __$$\         $$ |  
+                    $$  ____/ $$ | $$$$$$$ |$$ |  $$ |$$$$$$$$ |$$ |  \__|        $$ |  
+                    $$ |      $$ |$$  __$$ |$$ |  $$ |$$   ____|$$ |              $$ |  
+                    $$ |      $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$$\ $$ |            $$$$$$\ 
+                    \__|      \__| \_______| \____$$ | \_______|\__|            \______|
+                                            $$\   $$ |                                  
+                                            \$$$$$$  |                                  
+                                             \______/                                   
+
+                                                        
+                    Description: Player 1 Section
+                    *******************************************************************-->
                     <div class="col-md-4 col-lg-4">
-                      <div class="card text-center border-primary" id="player-1">
+                      <div class="card text-center" id="player1">
                         <div class="card-body">
                           <h2 class="card-title player-name">Player 1</h2>
-                          <p class="card-text player-score" id="score-1">0</p>
+                          <p class="card-text player-score" id="score1">0</p>
                           <div class="current mx-auto">
                             <p class="current-label">
                               Current
                             </p>
-                            <p class="current-score" id="current-1">
+                            <p class="current-score" id="current1">
                               0
                             </p>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <!--*****************************************************************
+                    $$$$$$$\  $$\                     
+                    $$  __$$\ \__|                    
+                    $$ |  $$ |$$\  $$$$$$$\  $$$$$$\  
+                    $$ |  $$ |$$ |$$  _____|$$  __$$\ 
+                    $$ |  $$ |$$ |$$ /      $$$$$$$$ |
+                    $$ |  $$ |$$ |$$ |      $$   ____|
+                    $$$$$$$  |$$ |\$$$$$$$\ \$$$$$$$\ 
+                    \_______/ \__| \_______| \_______|
+                                                      
+                    Description: Dice Section
+                    *******************************************************************-->
                     <div class="col-md-4 col-lg-4">
                       <div class="d-flex flex-column justify-content-between h-100 gap-5">
                         <div class="d-flex justify-content-center mt-5">
-                           <img src="assets/images/dice-1.png" alt="Dice Image" class="img-fluid dice" />
+                           <img src="assets/images/dice-1.png" 
+                                alt="Dice Image" 
+                                class="img-fluid dice" />
                         </div>
                         <div class="row gy-2">
                           <div class="d-grid gap-2 col-12 col-sm-12 col-md-12 col-lg-6 mx-auto">
-                            <button type="reset" class="btn btn-primary p-3 rounded me-2">
+                            <button type="button" class="btn btn-primary p-3 rounded me-2" id="rollBtn">
                               <i class="fa-solid fa-dice-d6"></i>
                               Roll
                             </button>
                           </div>
                           <div class="d-grid gap-2 col-12 col-sm-12 col-md-12 col-lg-6 mx-auto">
-                            <button type="submit" class="btn btn-primary p-3 rounded me-2">
+                            <button type="button" class="btn btn-primary p-3 rounded me-2" id="holdBtn">
                               <i class="fa-solid fa-upload"></i>
                               Hold
                             </button>
@@ -156,16 +198,32 @@ Description: Project 2 - Javascript Game
                         </div>
                       </div>
                     </div>
+                    <!--*****************************************************************
+                    $$$$$$$\  $$\                                                $$$$$$\  
+                    $$  __$$\ $$ |                                              $$  __$$\ 
+                    $$ |  $$ |$$ | $$$$$$\  $$\   $$\  $$$$$$\   $$$$$$\        \__/  $$ |
+                    $$$$$$$  |$$ | \____$$\ $$ |  $$ |$$  __$$\ $$  __$$\        $$$$$$  |
+                    $$  ____/ $$ | $$$$$$$ |$$ |  $$ |$$$$$$$$ |$$ |  \__|      $$  ____/ 
+                    $$ |      $$ |$$  __$$ |$$ |  $$ |$$   ____|$$ |            $$ |      
+                    $$ |      $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$$\ $$ |            $$$$$$$$\ 
+                    \__|      \__| \_______| \____$$ | \_______|\__|            \________|
+                                            $$\   $$ |                                    
+                                            \$$$$$$  |                                    
+                                             \______/                                     
+
+                                                        
+                    Description: Player 2 Section
+                    *******************************************************************-->
                     <div class="col-md-4 col-lg-4">
-                      <div class="card text-center" id="player-2">
+                      <div class="card text-center" id="player2">
                         <div class="card-body">
                           <h2 class="card-title player-name">Player 2</h2>
-                          <p class="card-text player-score" id="score=2">0</p>
+                          <p class="card-text player-score" id="score2">0</p>
                           <div class="current mx-auto">
                             <p class="current-label">
                               Current
                             </p>
-                            <p class="current-score" id="current-2">
+                            <p class="current-score" id="current2">
                               0
                             </p>
                           </div>
