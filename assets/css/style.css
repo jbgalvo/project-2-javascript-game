@@ -249,6 +249,15 @@ Description: Media Queries Section CSS
   .current {
     width: 90%;
   }
+
+  #dice {
+    margin-top: 0px;
+    margin-bottom: 150px;
+  }
+
+  #rollBtn {
+    margin-top: 50px;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
