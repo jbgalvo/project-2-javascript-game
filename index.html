@@ -119,36 +119,55 @@ Description: Project 2 - Javascript Game
           <div class="card shadow">
                 <div class="card-body">
                   <div class="row gy-5">
-                    <div class="col-md-5 col-lg-5">
-                      <div class="card text-center border-primary">
+                    <div class="col-md-4 col-lg-4">
+                      <div class="card text-center border-primary" id="player-1">
                         <div class="card-body">
-                          <h2 class="card-title player-name" id="player-1">Player 1</h2>
+                          <h2 class="card-title player-name">Player 1</h2>
                           <p class="card-text player-score" id="score-1">0</p>
                           <div class="current mx-auto">
-                            <p class="current-label">Current</p>
-                            <p class="current-score" id="current-1">0</p>
+                            <p class="current-label">
+                              Current
+                            </p>
+                            <p class="current-score" id="current-1">
+                              0
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-2 col-lg-2">
-                      <div class="row mt-4">
-                        <div class="d-grid gy-3 col-6 col-sm-12">
-                          <button type="reset" class="btn btn-primary p-3 rounded">Roll</button>
+                    <div class="col-md-4 col-lg-4">
+                      <div class="d-flex flex-column justify-content-end h-100 gap-5">
+                        <div class="d-flex justify-content-center align-items-start">
+                           <img src="assets/images/dice-1.png" alt="Dice Image" class="img-fluid dice" />
                         </div>
-                        <div class="d-grid gy-3 col-6 col-sm-12">
-                          <button type="submit" class="btn btn-primary p-3 rounded">Hold</button>
+                        <div class="row">
+                          <div class="d-grid gap-2 col-6 mx-auto">
+                            <button type="reset" class="btn btn-primary p-3 rounded me-2">
+                              <i class="fa-solid fa-dice-d6"></i>
+                              Roll
+                            </button>
+                          </div>
+                          <div class="d-grid gap-2 col-6 mx-auto">
+                            <button type="submit" class="btn btn-primary p-3 rounded me-2">
+                              <i class="fa-solid fa-upload"></i>
+                              Hold
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-5 col-lg-5">
-                      <div class="card text-center border-danger">
+                    <div class="col-md-4 col-lg-4">
+                      <div class="card text-center" id="player-2">
                         <div class="card-body">
-                          <h2 class="card-title player-name" id="player-2">Player 2</h2>
+                          <h2 class="card-title player-name">Player 2</h2>
                           <p class="card-text player-score" id="score=2">0</p>
                           <div class="current mx-auto">
-                            <p class="current-label">Current</p>
-                            <p class="current-score" id="current-2">0</p>
+                            <p class="current-label">
+                              Current
+                            </p>
+                            <p class="current-score" id="current-2">
+                              0
+                            </p>
                           </div>
                         </div>
                       </div>
