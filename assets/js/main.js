@@ -229,7 +229,7 @@ btnHold.addEventListener("click", () => {
       });
 
       // Check if player's score is >= 100
-      if (playerScores[currentPlayer] >= 10) {
+      if (playerScores[currentPlayer] >= 100) {
         //Ending the game
         gameStatus = "finished";
 
