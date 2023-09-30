@@ -64,8 +64,9 @@ const aboutTheGameModal = new bootstrap.Modal(
   document.getElementById("aboutTheGameModal")
 );
 
+
 //Open About Game Modal
-// aboutTheGameModal.show();
+aboutTheGameModal.show();
 
 /*****************************************
 $$$$$$\           $$\   $$\     
@@ -92,12 +93,9 @@ const initializeValues = () => {
   currentScore1.innerHTML = 0;
   currentScore2.innerHTML = 0;
 
-  //Hide dice
-  dice.classList.add("d-none");
-
   //Set active player to player 1
   player1.classList.add("border-primary");
-
+  player2.classList.remove("border-primary");
 };
 
 //Initialize Values
@@ -152,8 +150,6 @@ btnRoll.addEventListener("click", (e) => {
     rollBtnIcon.classList.add("fa-spinner", "fa-spin");
     
     setTimeout(() => {
-
-      dice.classList.remove("d-none");
 
       // Cube animation
       dice.style.animation = "animate 1.4s linear";
@@ -212,10 +208,8 @@ btnHold.addEventListener("click", () => {
     holdBtnIcon.classList.add("fa-spinner", "fa-spin");
     holdBtnIcon.classList.remove("fa-upload");
 
-    dice.classList.add("d-none");
-
     setTimeout(() => {
-
+      
       //Add current score to active player's score
       playerScores[currentPlayer] += currentScore;
 
@@ -226,18 +220,44 @@ btnHold.addEventListener("click", () => {
       holdBtnIcon.classList.remove("fa-spinner", "fa-spin");
       holdBtnIcon.classList.add("fa-upload");
 
-      // 2. Check if player's score is >= 100
-      if (playerScores[currentPlayer] >= 100) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `Player ${currentPlayer} current score is ${playerScores[currentPlayer]}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      // Check if player's score is >= 100
+      if (playerScores[currentPlayer] >= 10) {
         //Ending the game
         gameStatus = "finished";
+
+        //Play winner audio
+        winnerAudio.play();
+
+        //Display Notification of the winner
+        Swal.fire({
+          position: "center",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          icon: "success",
+          title: `Player ${currentPlayer} wins the pig dice game!`,
+          showCloseButton: true,
+        });
+
+        //Reset Variables
+        initializeValues();
+
       } else {
+
         //Switch again to the next player
         switchPlayer();
+
       }
 
     }, 300);
 
-   
   }
 });
 
@@ -253,4 +273,33 @@ $$ | \$$ |\$$$$$$$\ \$$$$$\$$$$  |
                                   
 Description: btnNew Game Event
 ************************************/
-btnNew.addEventListener("click", initializeValues);
+btnNew.addEventListener("click", () => {
+  
+  //Disable hold button
+  let newGameBtnIcon = document.querySelector("#newGameBtnIcon");
+
+  btnNew.disabled = true;
+  newGameBtnIcon.classList.add("fa-spinner", "fa-spin");
+  newGameBtnIcon.classList.remove("fa-arrows-rotate");
+
+  setTimeout(() => {
+
+    //Enable button
+    btnNew.disabled = false;
+    newGameBtnIcon.classList.remove("fa-spinner", "fa-spin");
+    newGameBtnIcon.classList.add("fa-arrows-rotate");
+
+    initializeValues();
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Successfully Game Reset!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+
+  }, 600);
+
+});
