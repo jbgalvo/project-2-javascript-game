@@ -112,7 +112,7 @@ Description: Project 2 - Javascript Game
           <i class="fa-solid fa-arrows-rotate"></i>
           New Game
         </button>
-        <button class="btn btn-success me-2">
+        <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#aboutTheGameModal">
           <i class="fa-regular fa-circle-question"></i>
           About the Game
         </button>
@@ -266,6 +266,69 @@ Description: Project 2 - Javascript Game
       
     </section>
   </main>
+
+  <!--*********************************************
+  $$\      $$\                 $$\           $$\ 
+  $$$\    $$$ |                $$ |          $$ |
+  $$$$\  $$$$ | $$$$$$\   $$$$$$$ | $$$$$$\  $$ |
+  $$\$$\$$ $$ |$$  __$$\ $$  __$$ | \____$$\ $$ |
+  $$ \$$$  $$ |$$ /  $$ |$$ /  $$ | $$$$$$$ |$$ |
+  $$ |\$  /$$ |$$ |  $$ |$$ |  $$ |$$  __$$ |$$ |
+  $$ | \_/ $$ |\$$$$$$  |\$$$$$$$ |\$$$$$$$ |$$ |
+  \__|     \__| \______/  \_______| \_______|\__|
+                                                
+  Description: Modal Section
+  ***********************************************-->
+  <div class="modal fade" id="aboutTheGameModal" tabindex="-1" aria-labelledby="aboutTheGameModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aboutTheGameModalLabel">
+            <i class="fa-solid fa-dice fa-bounce"></i>
+            Welcome to Pig Dice Game!
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="pb-2">
+            <strong>About Game:</strong> 
+            In this game, User Interface (UI) contains user/player 
+            that can do three things, they are as follows:
+          </p>
+          <p class="pb-2">
+            There will be two players in this game. At the start of the game Player 1 will be 
+            the CurrentPlayer and Player 2 will be the in-active one.
+          </p>
+          <ol class="pb-2">
+            <li>
+              <strong>Roll the dice: </strong> The current player has to roll the dice and then a random number will be generated. 
+              If current player gets any number other than 1 on the dice then that number 
+              will be added to the current score (initially the current score will be 0) and 
+              then the new score will be displayed under Current Score section.  
+              Note: If the current player gets 1 on the dice then the players will be switched i.e. 
+              the current player will become in-active and vice-versa.
+            </li>
+            <li>
+              <strong>Hold:</strong> If the current player clicks on HOLD, then the Current Score will be added to the Total Score. 
+              When the active player clicks the Hold button then the total score is evaluated. 
+              If the Total Score >= 100 then the current player wins else the players are switched.
+            </li>
+            <li>
+              <strong>Reset/New Game: </strong> 
+              All the scores are set to 0 and Player 1 is set as the starting player (current player).
+            </li>
+          </ol>
+          <p class="text-center">
+            Enjoy playing and Have Fun 
+            <i class="fa-solid fa-face-smile-wink"></i>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!--************************************************************
    $$$$$$\                      $$\            $$\               
   $$  __$$\                     \__|           $$ |              

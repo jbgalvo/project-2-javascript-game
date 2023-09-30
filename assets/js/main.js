@@ -1,21 +1,3 @@
-// let dice = document.getElementById("dice");
-
-// const min = 1;
-// const max = 24;
-
-// dice.onclick = function () {
-//   let xRand = getRandom(max, min);
-//   let yRand = getRandom(max, min);
-
-//   dice.style.webkitTransform = "rotateX(" + xRand + "deg) rotateY(" + yRand + "deg)";
-//   dice.style.transform = "rotateX(" + xRand + "deg) rotateY(" + yRand + "deg)";
-// };
-
-// function getRandom(max, min) {
-//   return (Math.floor(Math.random() * (max - min)) + min) * 90;
-// }
-
-
 //Global Variables
 let currentScore, currentPlayer, playerScores, gameStatus;
 
@@ -38,6 +20,11 @@ const btnHold = document.querySelector("#holdBtn");
 //Audio Variables
 const diceRollAudio = new Audio("assets/sounds/dice-roll.mp3");
 const winnerAudio = new Audio("assets/sounds/winner.mp3");
+
+//Mobal Variable
+const aboutTheGameModal = new bootstrap.Modal(
+  document.getElementById("aboutTheGameModal")
+);
 
 // Dice angle array
 let diceAngleArray = [
@@ -74,6 +61,9 @@ const initializeValues = () => {
 
 //Initialize Values
 initializeValues();
+
+//Open About Game Modal
+aboutTheGameModal.show();
 
 //Switch Player Functionality
 const switchPlayer = () => {
@@ -162,5 +152,5 @@ btnHold.addEventListener("click", () => {
 });
 
 
-//Restart game
+//Restart game button
 btnNew.addEventListener("click", initializeValues);
